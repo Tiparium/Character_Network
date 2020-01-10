@@ -20,6 +20,22 @@ public class char_connection{
 	}
 	
 	/**
+	 * Override the build in equals method. 
+	 * Check based on host and subject of primary relation
+	 * @param test_in
+	 * @return
+	 */
+	public boolean equals(Object test_in) {
+		if (test_in instanceof char_connection) {
+			if (this.getHalves()[0].getHost() == ((char_connection) test_in).getHalves()[0].getHost()) {
+				if (this.getHalves()[0].getSubject() == ((char_connection) test_in).getHalves()[0].getSubject())
+					return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * Construct a new two way character connection Relationship types:
 	 * 0 -> Normal
 	 * 1 -> Mutual (Two way, but all data is copied instead of manually entered)
@@ -82,6 +98,13 @@ class char_connection_half {
 		return subject;
 	}
 	
+	/**
+	 * Create half of a connection
+	 * @param host_in
+	 * @param subject_in
+	 * @param starting_status
+	 * @param summary_in
+	 */
 	public char_connection_half(net_char host_in, net_char subject_in, int starting_status, String summary_in) {
 		host = host_in;
 		subject = subject_in;

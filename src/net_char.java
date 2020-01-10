@@ -45,8 +45,12 @@ public class net_char {
 	public ArrayList<String> getTags() {
 		return tags;
 	}
+
 	public String getTagAtIndex(int i) {
-		return tags.get(i);
+		if (i < tags.size()) {
+			return tags.get(i);
+		}
+		return null;
 	}
 	
 	/**
@@ -98,6 +102,14 @@ public class net_char {
 				return true;
 		}
 		return false;
+	}
+	
+	/**
+	 * Override toString method to return name
+	 */
+	@Override
+	public String toString() {
+		return name;
 	}
 	
 	/**
